@@ -14,7 +14,7 @@ function loadImg(src) {
   return img;
 }
 
-const basePath = '../assets/png/personajes/estrellita/';
+const basePath = './assets/png/personajes/estrellita/';
 
 const sprites = {
   front: {

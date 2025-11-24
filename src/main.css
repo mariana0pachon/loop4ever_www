@@ -41,21 +41,21 @@ canvas {
 
 @font-face {
   font-family: 'Loop4ever1';
-  src: url('../assets/fonts/Loop4ever_1.ttf') format('truetype');
+  src: url('./assets/fonts/Loop4ever_1.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Loop4ever2';
-  src: url('../assets/fonts/Loop4ever_2.ttf') format('truetype');
+  src: url('./assets/fonts/Loop4ever_2.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Loop4ever3';
-  src: url('../assets/fonts/Loop4ever_3.ttf') format('truetype');
+  src: url('./assets/fonts/Loop4ever_3.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
