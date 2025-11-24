@@ -23,6 +23,7 @@ canvas {
   left: 50%;
   /*top: 30px;*/
   transform: translateX(-50%);
+  text-align: center;
   transition: font-family 0.15s ease;
   color: #fff;
   font-size: 20px;
@@ -33,11 +34,15 @@ canvas {
 
 .texto.titulo {
   top: 30px;
-  font-size: 25px;
+  font-size: 40px;
+}
+
+.texto.subtitulo {
+  top: 200px;
 }
 
 .texto.instagram {
-  top: 200px;
+  bottom: 150px;
   pointer-events: auto;
   text-decoration: none;
   cursor: pointer;
