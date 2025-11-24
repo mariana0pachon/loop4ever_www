@@ -13,10 +13,10 @@ canvas {
   height: 100%;
 }
 
-#texto {
+.texto {
   position: fixed;
   left: 50%;
-  top: 30px;
+  /*top: 30px;*/
   transform: translateX(-50%);
   transition: font-family 0.15s ease;
   color: #fff;
@@ -25,6 +25,18 @@ canvas {
   text-transform: uppercase;
   opacity: 0.9;
   pointer-events: none; /* so taps go through to the canvas */
+}
+
+.texto.titulo {
+  top: 30px;
+  font-size: 25px;
+}
+
+.texto.instagram {
+  top: 200px;
+  pointer-events: auto;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 @font-face {

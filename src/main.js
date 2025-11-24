@@ -178,7 +178,7 @@ function draw() {
 requestAnimationFrame(loop);
 
 // ANIMAR TEXTO
-const statusEl = document.getElementById('texto');
+const statusEl = document.querySelectorAll('.texto');
 
 const statusFonts = [
   "'Loop4ever1'",
@@ -189,11 +189,35 @@ const statusFonts = [
 let statusFontIndex = 0;
 const statusInterval = 220; // ms between font switches
 
-if (statusEl) {
-  statusEl.textContent = 'loop4ever sigue en proceso';
+if (statusEl.length > 0) {
+  console.log(statusEl);
+  statusEl.forEach(e => {
+    setInterval(() => {
+      statusFontIndex = (statusFontIndex + 1) % statusFonts.length;
+      e.style.fontFamily = statusFonts[statusFontIndex];
+    }, statusInterval);
+  })
+}
 
-  setInterval(() => {
-    statusFontIndex = (statusFontIndex + 1) % statusFonts.length;
-    statusEl.style.fontFamily = statusFonts[statusFontIndex];
-  }, statusInterval);
+// LOGICA LINK INSTAGRAM
+const instagramLink = document.querySelector('.instagram');
+
+if (instagramLink) {
+  instagramLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    // Get center link position
+    const rect = instagramLink.getBoundingClientRect();
+    const targetX = rect.left + rect.width / 2;
+    const targetY = rect.top + rect.height / 2;
+    
+    setTarget(targetX, targetY);
+    
+    // Wait the time it takes to finish the path to open the link
+    if (path && path.duration) {
+      setTimeout(() => {
+        window.location.href = instagramLink.href;
+      }, path.duration * 1000);
+    }
+  });
 }
