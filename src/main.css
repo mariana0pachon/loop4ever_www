@@ -7,6 +7,7 @@ html, body {
   overflow: hidden;
   touch-action: manipulation;
 }
+
 canvas {
   display: block;
   width: 100%;
@@ -26,10 +27,11 @@ canvas {
   text-align: center;
   transition: font-family 0.15s ease;
   color: #fff;
-  font-size: 20px;
+  font-size: 25px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   pointer-events: none; /* so taps go through to the canvas */
+  font-family: 'Loop4ever1', system-ui, sans-serif;
 }
 
 .texto.titulo {
@@ -38,11 +40,12 @@ canvas {
 }
 
 .texto.subtitulo {
-  top: 200px;
+  top: 125px;
 }
 
 .texto.instagram {
-  bottom: 150px;
+  bottom: 115px;
+  font-size: 30px;
   pointer-events: auto;
   text-decoration: none;
   cursor: pointer;

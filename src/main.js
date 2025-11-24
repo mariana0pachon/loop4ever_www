@@ -273,3 +273,30 @@ if (instagramLink) {
     }
   });
 }
+
+// Hide everything while assets are loading
+(function () {
+  var html = document.documentElement;
+
+  function done() {
+    if (!html.classList.contains('hidden')) return;
+    html.classList.remove('hidden');
+  }
+
+  if (document.fonts && document.fonts.load) {
+    Promise.all([
+      document.fonts.load("20px 'Loop4ever1'"),
+      document.fonts.load("20px 'Loop4ever2'"),
+      document.fonts.load("20px 'Loop4ever3'")
+    ])
+      .then(done)
+      .catch(done);
+  } else {
+    document.addEventListener('DOMContentLoaded', done);
+  }
+
+  // Safety timeout so you never stay stuck on a blank screen
+  setTimeout(done, 3000);
+})();
+
+
