@@ -6,13 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node build.js",
-    "deploy": "npm run build && surge dist --domain loop4ever.surge.sh && surge dist --domain loop4ever.com && surge dist --domain www.loop4ever.com"
+    "deploy": "npm run build && netlify deploy --dir=dist --prod"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "fs-extra": "^11.3.2",
-    "surge": "^0.24.6"
+    "fs-extra": "^11.3.2"
   }
 }
