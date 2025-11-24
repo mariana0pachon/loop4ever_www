@@ -12,3 +12,38 @@ canvas {
   width: 100%;
   height: 100%;
 }
+
+#texto {
+  position: fixed;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+  transition: font-family 0.15s ease;
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  pointer-events: none; /* so taps go through to the canvas */
+}
+
+@font-face {
+  font-family: 'Loop4ever1';
+  src: url('../assets/fonts/Loop4ever_1.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Loop4ever2';
+  src: url('../assets/fonts/Loop4ever_2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Loop4ever3';
+  src: url('../assets/fonts/Loop4ever_3.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -176,3 +176,24 @@ function draw() {
 }
 
 requestAnimationFrame(loop);
+
+// ANIMAR TEXTO
+const statusEl = document.getElementById('texto');
+
+const statusFonts = [
+  "'Loop4ever1'",
+  "'Loop4ever2'",
+  "'Loop4ever3'",
+];
+
+let statusFontIndex = 0;
+const statusInterval = 220; // ms between font switches
+
+if (statusEl) {
+  statusEl.textContent = 'loop4ever sigue en proceso';
+
+  setInterval(() => {
+    statusFontIndex = (statusFontIndex + 1) % statusFonts.length;
+    statusEl.style.fontFamily = statusFonts[statusFontIndex];
+  }, statusInterval);
+}
