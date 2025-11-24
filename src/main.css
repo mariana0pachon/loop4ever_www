@@ -23,7 +23,6 @@ canvas {
   font-size: 20px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.9;
   pointer-events: none; /* so taps go through to the canvas */
 }
 
@@ -37,6 +36,14 @@ canvas {
   pointer-events: auto;
   text-decoration: none;
   cursor: pointer;
+}
+
+.texto.track {
+  position: absolute;
+  opacity: 0.5;
+  transform: translate(-50%, -50%); /* Center on the coordinate */
+  transition: opacity 1.5s ease-out;
+  left: 0; /* Override the 50% from .texto */
 }
 
 @font-face {

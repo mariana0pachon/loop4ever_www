@@ -66,6 +66,46 @@ let walkFrameTimer = 0;
 const walkFrameDuration = 0.12;
 const speed = 180;
 
+// TRACK VARIABLES
+let trackTimer = 0;
+const trackInterval = 0.15; // spawn 'o' every 0.15s (150ms)
+
+function createTrack(x, y) {
+  const el = document.createElement('div');
+  el.className = 'texto track';
+  el.innerText = 'o';
+  
+  // Random font size 15-20
+  const size = 15 + Math.random() * 10;
+  el.style.fontSize = size + 'px';
+  
+  // Position
+  el.style.left = x + 'px';
+  el.style.top = y + 'px';
+  
+  document.body.appendChild(el);
+  
+  // Add to the animation list so it alternates fonts
+  statusEl.push(el);
+  
+  // Fade out logic
+  // Wait a tiny bit to ensure the initial opacity is applied before transitioning
+  requestAnimationFrame(() => {
+    // Start fade out after a short delay or immediately depending on preference.
+    setTimeout(() => {
+      el.style.opacity = '0';
+    }, 1000);
+  });
+  
+  // Remove from DOM after transition + buffer
+  setTimeout(() => {
+    if (el.parentNode) el.parentNode.removeChild(el);
+    // Remove from statusEl array to stop animating it
+    const idx = statusEl.indexOf(el);
+    if (idx > -1) statusEl.splice(idx, 1);
+  }, 2000); // 1.5s transition + buffer
+}
+
 function setTarget(x, y) {
   const start = { x: pos.x, y: pos.y };
   const end = { x, y };
@@ -158,8 +198,16 @@ function update(dt, now) {
       walkFrameTimer -= walkFrameDuration;
       walkFrame = (walkFrame + 1) % sprites[direction].walk.length;
     }
+
+    // Spawn track logic
+    trackTimer += dt;
+    if (trackTimer >= trackInterval) {
+      trackTimer = 0;
+      createTrack(pos.x, pos.y);
+    }
   } else {
     walkFrame = 0;
+    trackTimer = trackInterval; // Force immediate spawn on next walk start
   }
 }
 
@@ -178,7 +226,8 @@ function draw() {
 requestAnimationFrame(loop);
 
 // ANIMAR TEXTO
-const statusEl = document.querySelectorAll('.texto');
+// Convert NodeList to Array so we can add/remove elements dynamically
+let statusEl = Array.from(document.querySelectorAll('.texto'));
 
 const statusFonts = [
   "'Loop4ever1'",
@@ -189,15 +238,18 @@ const statusFonts = [
 let statusFontIndex = 0;
 const statusInterval = 220; // ms between font switches
 
-if (statusEl.length > 0) {
-  console.log(statusEl);
-  statusEl.forEach(e => {
-    setInterval(() => {
-      statusFontIndex = (statusFontIndex + 1) % statusFonts.length;
-      e.style.fontFamily = statusFonts[statusFontIndex];
-    }, statusInterval);
-  })
-}
+// Use a single interval for all elements
+setInterval(() => {
+  statusFontIndex = (statusFontIndex + 1) % statusFonts.length;
+  const font = statusFonts[statusFontIndex];
+  
+  // Loop backwards so we can safely remove items if needed (though we splice elsewhere)
+  for (let i = 0; i < statusEl.length; i++) {
+    if (statusEl[i]) {
+      statusEl[i].style.fontFamily = font;
+    }
+  }
+}, statusInterval);
 
 // LOGICA LINK INSTAGRAM
 const instagramLink = document.querySelector('.instagram');
