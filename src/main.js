@@ -142,8 +142,8 @@ function setTarget(x, y) {
   walking = true;
 }
 
-canvas.addEventListener('click', (e) => setTarget(e.clientX, e.clientY));
-canvas.addEventListener('touchstart', (e) => {
+document.body.addEventListener('click', (e) => setTarget(e.clientX, e.clientY));
+document.body.addEventListener('touchstart', (e) => {
   const t = e.touches[0];
   setTarget(t.clientX, t.clientY);
 });
