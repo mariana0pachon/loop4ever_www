@@ -55,7 +55,7 @@ const sprites = {
   },
 };
 
-let pos = { x: canvas.width / 2, y: canvas.height / 2 };
+let pos = { x: canvas.width / 2, y: canvas.height * 0.40 };
 let direction = 'front';
 let walking = false;
 let path = null;
@@ -252,11 +252,14 @@ setInterval(() => {
 }, statusInterval);
 
 // LOGICA LINK INSTAGRAM
-const instagramLink = document.querySelector('.instagram');
+const instagramLink = document.querySelector('.link');
 
 if (instagramLink) {
   instagramLink.addEventListener('click', (e) => {
     e.preventDefault();
+    
+    // Capture the href BEFORE the setTimeout
+    const targetUrl = instagramLink.href;
     
     // Get center link position
     const rect = instagramLink.getBoundingClientRect();
@@ -268,7 +271,7 @@ if (instagramLink) {
     // Wait the time it takes to finish the path to open the link
     if (path && path.duration) {
       setTimeout(() => {
-        window.location.href = instagramLink.href;
+        window.location.href = targetUrl;
       }, path.duration * 1000);
     }
   });
@@ -298,5 +301,3 @@ if (instagramLink) {
   // Safety timeout so you never stay stuck on a blank screen
   setTimeout(done, 3000);
 })();
-
-

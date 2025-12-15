@@ -29,7 +29,6 @@ canvas {
   color: #fff;
   font-size: 25px;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   pointer-events: none; /* so taps go through to the canvas */
   font-family: 'Loop4ever1', system-ui, sans-serif;
 }
@@ -37,21 +36,23 @@ canvas {
 .texto.titulo {
   top: 30px;
   font-size: 35px;
+  text-transform: uppercase;
 }
 
-.texto.subtitulo {
-  top: 125px;
+.texto.instagram{
+  bottom: 80px;
 }
 
-.texto.instagram {
-  bottom: 115px;
-  font-size: 30px;
+.link.instagram {
   pointer-events: auto;
   text-decoration: none;
+  font-size: 30px;
   cursor: pointer;
+  color: white
 }
 
 .texto.track {
+  text-transform: uppercase;
   position: absolute;
   opacity: 0.5;
   transform: translate(-50%, -50%); /* Center on the coordinate */
